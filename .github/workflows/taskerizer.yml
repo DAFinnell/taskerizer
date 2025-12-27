@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 10.0.101
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./Taskerizer.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./Taskerizer.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./Taskerizer.sln --configuration Release --no-build --verbosity normal
