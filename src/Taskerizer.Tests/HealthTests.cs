@@ -1,10 +1,21 @@
-﻿namespace Taskerizer.Tests;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc.Testing;
 
-public class UnitTest1
+namespace Taskerizer.Tests;
+
+public class HealthTests : IClassFixture<WebApplicationFactory<Program>>
 {
-    [Fact]
-    public void Test1()
+    private readonly HttpClient _client;
+    
+    public HealthTests(WebApplicationFactory<Program> factory)
     {
+        _client = factory.CreateClient();
+    }
 
+    [Fact]
+    public async Task Health_ReturnsOK()
+    {
+        var response = await _client.GetAsync("/health");
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }
