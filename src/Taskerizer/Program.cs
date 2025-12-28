@@ -5,6 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
+
+// Singletons
+builder.Services.AddSingleton<ITenantResolver, RouteTenantResolver>();
+
+// Request Scoped
 builder.Services.AddScoped<ITenantContext, TenantContext>();
 
 var app = builder.Build();
@@ -26,6 +31,7 @@ else
 
 app.UseStatusCodePages();
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
