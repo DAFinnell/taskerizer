@@ -32,6 +32,7 @@ else
 app.UseStatusCodePages();
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseMiddleware<TenantResolutionMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
