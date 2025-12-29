@@ -7,7 +7,7 @@ public class TenantContext : ITenantContext {
 
     internal void Resolve(string tenantSlug)
     {
-        if (string.IsNullOrEmpty(tenantSlug))
+        if (string.IsNullOrWhiteSpace(tenantSlug))
         {
             throw new ArgumentException();
         }
