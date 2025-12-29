@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Taskerizer.Tests;
 
-public class HealthTests : IClassFixture<WebApplicationFactory<Program>>
+public class HealthTest : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient _client;
     
-    public HealthTests(WebApplicationFactory<Program> factory)
+    public HealthTest(WebApplicationFactory<Program> factory)
     {
         _client = factory.CreateClient();
     }
